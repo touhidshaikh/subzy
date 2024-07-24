@@ -28,7 +28,7 @@ func Process(config *Config) error {
 	
 	var skippedFingerprintNames []string
 	for _, fingerprint := range skippedFingerprints {
-		skippedFingerprintNames = append(skippedFingerprintNames, fingerprint.skipfingerprints) // Replace with appropriate field
+		skippedFingerprintNames = append(skippedFingerprintNames, fingerprint.Engine) // Print only Engine Name
 	}
 	fmt.Println("[ * ] Skipped Fingerprints:", skippedFingerprints)
 
