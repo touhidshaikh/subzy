@@ -48,7 +48,7 @@ func (c *Config) matchResponse(body string) Result {
 	for _, fingerprint := range c.fingerprints {
 
 		if fingerprint.Fingerprint == "" {
-			// Skip the check if Fingerprint is empty and move to the next
+			// Skip the check if Fingerprint is empty in json file and move to the next. this prevent a scanner to show wrong or false positive result.
 			continue
 		}
 

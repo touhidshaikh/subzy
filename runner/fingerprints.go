@@ -17,7 +17,9 @@ type Fingerprint struct {
 
 func Fingerprints() ([]Fingerprint, error) {
 
-	var fingerprints []Fingerprint
+	var allFingerprints []Fingerprint
+	var validFingerprints []Fingerprint
+	var skippedFingerprints []Fingerprint
 
 	fingerPrintsPath, err := GetFingerprintPath()
 	if err != nil {
@@ -28,10 +30,18 @@ func Fingerprints() ([]Fingerprint, error) {
 		return nil, fmt.Errorf("Fingerprints: %v", err)
 	}
 
-	err = json.Unmarshal(file, &fingerprints)
+	err = json.Unmarshal(file, &allFingerprints)
 	if err != nil {
 		return nil, fmt.Errorf("Fingerprints: %v", err)
 	}
 
-	return fingerprints, nil
+	for _, fingerprint := range allFingerprints {
+		if fingerprint.Fingerprint == "" {
+			skippedFingerprints = append(skippedFingerprints, fingerprint)
+		} else {
+			validFingerprints = append(validFingerprints, fingerprint)
+		}
+	}
+
+	return validFingerprints, skippedFingerprints, nil
 }
