@@ -33,7 +33,7 @@ func Process(config *Config) error {
 		skippedFingerprintNames = append(skippedFingerprintNames, fingerprint.Engine) // Print only Engine Name
 	}
 	skippedFingerprintNamesStr := strings.Join(skippedFingerprintNames, ", ")
-	fmt.Println("[ * ] Skipped Fingerprints:", skippedFingerprintNames)
+	fmt.Println("[ * ] Skipped Fingerprints:", skippedFingerprintNamesStr)
 
 
 
