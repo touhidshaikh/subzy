@@ -36,7 +36,7 @@ func (s *Config) initHTTPClient() {
 }
 
 func (c *Config) loadFingerprints() error {
-	validFingerprints, skippedFingerprints, err := Fingerprints()
+	validFingerprints, err := Fingerprints()
 	if err != nil {
 		return err
 	}

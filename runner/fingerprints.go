@@ -15,7 +15,7 @@ type Fingerprint struct {
 	False_Positive 		[]string
 }
 
-func Fingerprints() ([]Fingerprint, error) {
+func Fingerprints() ([]Fingerprint, []Fingerprint, error) {
 
 	var allFingerprints []Fingerprint
 	var validFingerprints []Fingerprint
@@ -43,5 +43,5 @@ func Fingerprints() ([]Fingerprint, error) {
 		}
 	}
 
-	return validFingerprints, skippedFingerprints, nil
+	return validFingerprints, skippedFingerprints, err
 }
