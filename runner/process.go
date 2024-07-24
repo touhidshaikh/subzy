@@ -26,10 +26,13 @@ func Process(config *Config) error {
 	fmt.Println("[ * ]", "Loaded", len(validFingerprints), "Valid Fingerprints")
 	fmt.Println("[ * ]", "Skipped", len(skippedFingerprints), "Due to Invalid or Empty Fingerprints")
 	
+	// Collecting the names of skipped fingerprints for debug and skipped test
+
 	var skippedFingerprintNames []string
 	for _, fingerprint := range skippedFingerprints {
 		skippedFingerprintNames = append(skippedFingerprintNames, fingerprint.Engine) // Print only Engine Name
 	}
+	skippedFingerprintNamesStr := strings.Join(skippedFingerprintNames, ", ")
 	fmt.Println("[ * ] Skipped Fingerprints:", skippedFingerprintNames)
 
 
