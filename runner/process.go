@@ -24,8 +24,13 @@ func Process(config *Config) error {
 
 	fmt.Println("[ * ]", "Loaded", len(subdomains), "Targets")
 	fmt.Println("[ * ]", "Loaded", len(validFingerprints), "Valid Fingerprints")
-	fmt.Println("[ * ]", "Skipped", len(skippedFingerprints), "Skipped Fingerprints")
+	fmt.Println("[ * ]", "Skipped", len(skippedFingerprints), "Due to Invalid or Empty Fingerprints")
 	
+	fmt.Println("[ * ] Skipped Fingerprints:", skippedFingerprints)
+
+
+
+
 	if config.Output != "" {
 		fmt.Printf("[ * ] Output filename: %s\n", config.Output)
 		fmt.Println(isEnabled(config.OnlyVuln), "Save only vulnerable subdomains")
