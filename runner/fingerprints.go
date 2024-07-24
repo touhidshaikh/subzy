@@ -23,16 +23,16 @@ func Fingerprints() ([]Fingerprint, []Fingerprint, error) {
 
 	fingerPrintsPath, err := GetFingerprintPath()
 	if err != nil {
-		return err, fmt.Errorf("Fingerprints: %v", err)
+		return nil, nil, fmt.Errorf("Fingerprints: %v", err)
 	}
 	file, err := os.ReadFile(fingerPrintsPath)
 	if err != nil {
-		return err, fmt.Errorf("Fingerprints: %v", err)
+		return nil, nil, fmt.Errorf("Fingerprints: %v", err)
 	}
 
 	err = json.Unmarshal(file, &allFingerprints)
 	if err != nil {
-		return err, fmt.Errorf("Fingerprints: %v", err)
+		return nil, nil, fmt.Errorf("Fingerprints: %v", err)
 	}
 
 	for _, fingerprint := range allFingerprints {
@@ -42,6 +42,7 @@ func Fingerprints() ([]Fingerprint, []Fingerprint, error) {
 			validFingerprints = append(validFingerprints, fingerprint)
 		}
 	}
+
 
 	return validFingerprints, skippedFingerprints, err
 }
